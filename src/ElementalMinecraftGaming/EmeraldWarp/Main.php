@@ -21,8 +21,27 @@ class Main extends PluginBase implements listener {
 	public function onEnable() {
     $this->getLogger()->info(TextFormat::GREEN . "Created by MrDevCat -Discord- ");
 		@mkdir($this->getDataFolder());
-		$this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array("example" => "world 123 134 543"));
+		$this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array("examplewarp" => "world 123 134 543"));
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
-  
-//ToDo
+	
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
+		if ($sender->hasPermission("emerald.setwarp")) {
+			if (strtolower($command->getName()) == "emeraldsetwarp") {
+				if ($sender instanceof Player) {
+					if (isset($args[0])) {
+						$sender->sendMessage(TextFormat::GOLD . "Setting warp");
+						$player = $this->getPlayer();
+						$levels = $player->getLevel()->getFolderName();
+						$z = $player->getZ();
+						$x = $player->getX();
+						$y = $player->getY();
+						//ToDo
+						$sender->sendMessage(TextFormat::GOLD . "Warp set at: $levels, $x, $y, $z");
+						return true;
+					} else {
+						sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+						return false;
+					}
+				}
+				//ToDo
