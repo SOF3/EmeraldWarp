@@ -1,0 +1,27 @@
+name: EmeraldWarp
+main: ElementalMinecraftGaming\EmeraldWarp\Main
+version: 1.0.0
+api: [3.5.5]
+load: POSTWORLD
+author: ElementalMinecraftGaming
+description: Set warps and use them!
+
+commands:
+ emeraldsetwarp:
+  description: Set a warp!
+  usage: "/emeraldsetwarp {warp}"
+  permission: emerald.setwarp
+  aliases: [esw]
+ emeraldwarp:
+  description: Warp!
+  usage: "/emeraldwarp {warp}"
+  permission: emerald.warp
+  aliases: [ew]
+
+permissions:
+  emerald.setwarp:
+    default: op
+    description: Let's you use /esw {warp}
+  emerald.warp:
+    default: true
+    description: Let's you use /ew {warp}
