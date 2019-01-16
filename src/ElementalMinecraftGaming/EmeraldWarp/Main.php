@@ -21,7 +21,7 @@ class Main extends PluginBase implements listener {
 	public function onEnable() {
     $this->getLogger()->info(TextFormat::GREEN . "Created by MrDevCat -Discord- ");
 		@mkdir($this->getDataFolder());
-		$this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array("examplewarp" => "world 123 134 543"));
+		$this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 	
@@ -29,18 +29,29 @@ class Main extends PluginBase implements listener {
 		if ($sender->hasPermission("emerald.setwarp")) {
 			if (strtolower($command->getName()) == "emeraldsetwarp") {
 				if ($sender instanceof Player) {
-						$sender->sendMessage(TextFormat::GOLD . "Setting warp");
-						$player = $this->getPlayer();
-						$levels = $player->getLevel()->getFolderName();
-						$z = $player->getZ();
-						$x = $player->getX();
-						$y = $player->getY();
+					$sender->sendMessage(TextFormat::GOLD . "Setting warp");
+					$player = $this->getPlayer();
+					//ToDo
+					$leveled = $player->getLevel()->getFolderName();
+					$z = $player->getZ();
+					$x = $player->getX();
+					$y = $player->getY();
+					$this->getConfig->set("$warpname", $leveled, $x, $y, $z);
+					$this->getConfig->save();
+					$sender->sendMessage(TextFormat::GOLD . "Warp set at: $leveled, $x, $y, $z");
+					return true;
+				} else {
+					sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+					return false;
+				}
+			}
+			
+			if ($sender->hasPermission("emerald.warp")) {
+				if (strtolower($command->getName()) == "emeraldwarp") {
+					if ($sender instanceof Player) {
+						$sender->sendMessage(TextFormat::GOLD . "Warping!");
 						//ToDo
-						$sender->sendMessage(TextFormat::GOLD . "Warp set at: $levels, $x, $y, $z");
 						return true;
 					} else {
-						sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+						$sender->sendMessage(TextFormat::RED . "Potty trouble!");
 						return false;
-					}
-				}
-				//ToDo
