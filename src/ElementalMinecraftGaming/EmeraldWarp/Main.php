@@ -29,7 +29,6 @@ class Main extends PluginBase implements listener {
 		if ($sender->hasPermission("emerald.setwarp")) {
 			if (strtolower($command->getName()) == "emeraldsetwarp") {
 				if ($sender instanceof Player) {
-					if (isset($args[0])) {
 						$sender->sendMessage(TextFormat::GOLD . "Setting warp");
 						$player = $this->getPlayer();
 						$levels = $player->getLevel()->getFolderName();
