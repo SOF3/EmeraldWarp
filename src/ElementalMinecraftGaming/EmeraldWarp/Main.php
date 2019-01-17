@@ -29,15 +29,16 @@ class Main extends PluginBase implements listener {
 		if ($sender->hasPermission("emerald.setwarp")) {
 			if (strtolower($command->getName()) == "emeraldsetwarp") {
 				if ($sender instanceof Player) {
+					if (isset($args[0])) {
 					$sender->sendMessage(TextFormat::GOLD . "Setting warp");
-					$player = $this->getPlayer();
-					//ToDo
 					$leveled = $player->getLevel()->getFolderName();
 					$z = $player->getZ();
 					$x = $player->getX();
 					$y = $player->getY();
-					$this->getConfig->set("$warpname", $leveled, $x, $y, $z);
-					$this->getConfig->save();
+						$warp = $args[0];
+					$config = $plugin->getConfig();
+                                        $config->set([$leveled, $x, $y, $z,"entry 2"],$warp);
+                                        $config->save();
 					$sender->sendMessage(TextFormat::GOLD . "Warp set at: $leveled, $x, $y, $z");
 					return true;
 				} else {
