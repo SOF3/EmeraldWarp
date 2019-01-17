@@ -13,11 +13,15 @@ Currently only available by looking in your config for warps but a command for t
 
 ## Commands and perms in version 1.0
 Command: /emeraldsetwarp {warp}
+
 Permission: emerald.setwarp
+
 Aliases: esw {warp}
 
 Command: /emeraldwarp {warp}
+
 Permission: emerald.warp
+
 Aliases: ew {warp}
 
 ## Credits
