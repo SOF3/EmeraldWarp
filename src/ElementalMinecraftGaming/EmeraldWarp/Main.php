@@ -46,22 +46,22 @@ class Main extends PluginBase implements listener {
                         return false;
                     }
                 }
+            }
+        }
 
-                if ($sender->hasPermission("emerald.warp")) {
-                    if (strtolower($command->getName()) == "emeraldwarp") {
-                        if ($sender instanceof Player) {
-                            if (isset($args[0])) {
-                                $warpp = $args[0];
-                                $configg = $plugin->getConfig();
-                                $configg->get([$leveled, $x, $y, $z, "entry 2"], $warpp);
-                                $sender->sendMessage(TextFormat::GOLD . "Warping!");
-                                $sender->teleport(new Position($leveled, $x, $y, $z));
-                                return true;
-                            } else {
-                                $sender->sendMessage(TextFormat::RED . "Warp failed: Not set or no perms!");
-                                return false;
-                            }
-                        }
+        if ($sender->hasPermission("emerald.warp")) {
+            if (strtolower($command->getName()) == "emeraldwarp") {
+                if ($sender instanceof Player) {
+                    if (isset($args[0])) {
+                        $warpp = $args[0];
+                        $configg = $plugin->getConfig();
+                        $configg->get([$leveled, $x, $y, $z, "entry 2"], $warpp);
+                        $sender->sendMessage(TextFormat::GOLD . "Warping!");
+                        $sender->teleport(new Position($leveled, $x, $y, $z));
+                        return true;
+                    } else {
+                        $sender->sendMessage(TextFormat::RED . "Warp failed: Not set or no perms!");
+                        return false;
                     }
                 }
             }
