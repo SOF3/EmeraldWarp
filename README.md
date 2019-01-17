@@ -24,6 +24,9 @@ Permission: emerald.warp
 
 Aliases: ew {warp}
 
+## Suggestions
+Create a issue with suggestion name and description. I will then add the suggestion tag.
+
 ## Credits
 Creator: ElementalMinecraftGaming / MrDevCat 'Discord'
 
