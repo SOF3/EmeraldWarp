@@ -15,8 +15,8 @@ use pocketmine\event\TranslationContainer;
 use pocketmine\utils\TextFormat;
 
 class Main extends PluginBase implements listener {
-	
-	private $config;
+
+    private $config;
 
     public function onEnable() {
         $this->getLogger()->info(TextFormat::GREEN . "Created by MrDevCat -Discord- ");
@@ -31,10 +31,10 @@ class Main extends PluginBase implements listener {
                 if ($sender instanceof Player) {
                     if (isset($args[0])) {
                         $sender->sendMessage(TextFormat::GOLD . "Setting warp");
-                        $leveled = $player->getLevel()->getFolderName();
-                        $z = $player->getZ();
-                        $x = $player->getX();
-                        $y = $player->getY();
+                        $leveled = $sender->getLevel()->getFolderName();
+                        $z = $sender->getZ();
+                        $x = $sender->getX();
+                        $y = $sender->getY();
                         $warp = $args[0];
                         $config = $plugin->getConfig();
                         $config->set([$leveled, $x, $y, $z, "entry 2"], $warp);
@@ -42,7 +42,7 @@ class Main extends PluginBase implements listener {
                         $sender->sendMessage(TextFormat::GOLD . "Warp set at: $leveled, $x, $y, $z");
                         return true;
                     } else {
-                        $sender->sendMessage(TextFormat::RED . "Incorrect usage or privlages!");
+                        $sender->sendMessage(TextFormat::RED . "Warp creation failed!");
                         return false;
                     }
                 }
@@ -55,10 +55,10 @@ class Main extends PluginBase implements listener {
                                 $configg = $plugin->getConfig();
                                 $configg->get([$leveled, $x, $y, $z, "entry 2"], $warpp);
                                 $sender->sendMessage(TextFormat::GOLD . "Warping!");
-                                $player->teleport(new Position($leveled, $x, $y, $z));
+                                $sender->teleport(new Position($leveled, $x, $y, $z));
                                 return true;
                             } else {
-                                $sender->sendMessage(TextFormat::RED . "Not set or no perms!");
+                                $sender->sendMessage(TextFormat::RED . "Warp failed: Not set or no perms!");
                                 return false;
                             }
                         }
