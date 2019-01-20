@@ -17,6 +17,16 @@ commands:
   usage: "/emeraldwarp {warp}"
   permission: emerald.warp
   aliases: [ew]
+ emeraldlistwarps:
+  description: List Warps!
+  usage: "/emeraldlistwarps"
+  permission: emerald.listw
+  aliases: [elw]
+ emeraldelwarp:
+  description: delete Warps!
+  usage: "/emeraldelwarp"
+  permission: emerald.delwarp
+  aliases: [edw]
 
 permissions:
   emerald.setwarp:
@@ -25,3 +35,9 @@ permissions:
   emerald.warp:
     default: true
     description: Let's you use /ew {warp}
+  emerald.listw:
+    default: true
+    description: Let's you use /elw
+  emerald.delwarp:
+    default: op
+    description: Let's you use /edw
