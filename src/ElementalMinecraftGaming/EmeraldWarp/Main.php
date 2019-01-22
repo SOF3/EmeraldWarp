@@ -21,7 +21,7 @@ class Main extends PluginBase implements listener {
     private $config;
 
     public function onEnable() {
-        $this->getLogger()->info(TextFormat::GREEN . "Created by MrDevCat -Discord- ");
+        $this->getLogger()->info("Created by MrDevCat -Discord- ");
         @mkdir($this->getDataFolder());
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
