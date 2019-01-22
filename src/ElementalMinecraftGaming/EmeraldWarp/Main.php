@@ -28,8 +28,8 @@ class Main extends PluginBase implements listener {
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
-        if ($sender->hasPermission("emerald.setwarp")) {
-            if (strtolower($command->getName()) == "emeraldsetwarp") {
+        if (strtolower($command->getName()) == "emeraldsetwarp") {
+	   if ($sender->hasPermission("emerald.setwarp")) {
                 if ($sender instanceof Player) {
                     if (isset($args[0])) {
                         $sender->sendMessage(TextFormat::GOLD . "Setting warp");
@@ -51,8 +51,8 @@ class Main extends PluginBase implements listener {
             }
         }
 
-        if ($sender->hasPermission("emerald.warp")) {
-            if (strtolower($command->getName()) == "emeraldwarp") {
+        if (strtolower($command->getName()) == "emeraldwarp") {
+	    if ($sender->hasPermission("emerald.warp")) {
                 if ($sender instanceof Player) {
                     if (isset($args[0])) {
                         $warp = $args[0];
@@ -75,8 +75,8 @@ class Main extends PluginBase implements listener {
             }
         }
 
-	if ($sender->hasPermission("emerald.delwarp")) {
-            if (strtolower($command->getName()) == "emeraldelwarp") {
+	if (strtolower($command->getName()) == "emeraldelwarp") {
+	   if ($sender->hasPermission("emerald.delwarp")) {
                 if ($sender instanceof Player) {
                     if (isset($args[0])) {
                         $warp = $args[0];
@@ -92,8 +92,8 @@ class Main extends PluginBase implements listener {
             }
         }
 
-        if ($sender->hasPermission("emerald.listw")) {
-            if (strtolower($command->getName()) == "emeraldlistwarps") {
+        if (strtolower($command->getName()) == "emeraldlistwarps") {
+	   if ($sender->hasPermission("emerald.listw")) {
                 if ($sender instanceof Player) {
                     $config = $this->getConfig();
                     $list = $this->config->getAll();
